@@ -1,7 +1,8 @@
-
+# 
 require 'book'
 class Library
-
+  # Configuration Class requires the user to insert either one of
+  # and display it to the user and a suggestions
     class Config
         @@action =['list','find', 'add', 'quit']
         def self.actions
@@ -34,10 +35,9 @@ class Library
 
             #do that action
             result = do_action(action, args)
-            #repeat until user quits
-            
+            #repeat until user quits            
          end
-
+         conclusion
     end
 def get_action
         action = nil
@@ -45,7 +45,7 @@ def get_action
         until Library::Config.actions.include?(action)
             # what do you want to do?(list, find, add, quit)
             puts "Actions:" + Library::Config.actions.join(", ") if action
-            print "Please Enter:>"
+            print "Please Insert you Request:>"
             user_response = gets.chomp
             args = user_response.downcase.strip.split(' ')
             action = args.shift
@@ -72,7 +72,8 @@ def get_action
 end
 #list method
  def list
-     puts "\nListing books\n".upcase
+    output_action_header("Listing books")
+    
      books = Book.saved_books
 
     # Display Books
@@ -98,9 +99,9 @@ def find(keyword="")
      books = Book.saved_books
      
      found = books.select do |bk|
-        bk.title.downcase.include?(keyword.downcase) ||
+        bk.title.downcase.include?(keyword.downcase)    ||
         bk.language.downcase.include?(keyword.downcase) ||
-        bk.author.downcase.include?(keyword.downcase) ||
+        bk.author.downcase.include?(keyword.downcase)   ||
         bk.publisher.downcase.include?(keyword.downcase)
      end
        output_book_table(found)
@@ -127,25 +128,25 @@ end
 
     #private
     def output_action_header(txt)
-        puts "\n#{txt.upcase.center(60)}\n\n"
+        puts "\n#{txt.upcase.center(73)}\n\n"
     end
 
     def output_book_table(books=[])
-        print " " + "Title".ljust(20)
-        print " " + "Language".ljust(10)
-        print " " + "Author".rjust(8) + "\n"
-        print " " + "Publisher".rjust(8) + "\n"
-        puts "-" * 60
+        print " " + "Title".ljust(30)
+        print " " + "Language".ljust(20)
+        print " " + "Author".ljust(10)
+        print " " + "Publisher".rjust(6) + "\n"
+        puts "-" * 73
 
        books.each do |bk|
-          line =  " " << bk.title.ljust(30)
+          line =  " " << bk.title.ljust(30) 
           line << " " + bk.language.ljust(20)
-          line << " " + bk.author.rjust(6)
-          line << " " + bk.publisher.rjust(6)
+          line << " " + bk.author.ljust(10)
+          line << " " + bk.publisher.rjust(6) + "\n"
           puts line
        end
         puts "No listings found" if books.empty?
-        puts "-" * 60
+        puts "-" * 73
       end
     
 

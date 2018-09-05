@@ -2,7 +2,6 @@
 
 class Book
     attr_accessor :title, :language, :author, :publisher
-    
     def initialize(args ={})
         @title     = args[:title]     ||  ""
         @language  = args[:language]  ||  ""
