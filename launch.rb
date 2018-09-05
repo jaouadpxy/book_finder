@@ -2,16 +2,14 @@
 #
 # Launch this Ruby file from the command line 
 # to get started.
-#
-
-# 
-
 
 # require "#{APP_ROOT}/docs/library"
 # require File.join(APP_ROOT, 'docs', 'library.rb')
 # require File.join(APP_ROOT, 'docs', 'library')
 # $:.unshift(File.join(APP_ROOT, 'docs'))
 
+
+# the login  Feature to access the app
 
 
 user = ""
@@ -28,15 +26,12 @@ until user =="admin"
     else
         # constant variable carrying the actual directory
         APP_ROOT = File.dirname(__FILE__)
-
         $:.unshift(File.join(APP_ROOT, 'docs'))
         require('library')
         library = Library.new('books.txt')
         library.start_up!        
     end
 end
-
-
 
 
 

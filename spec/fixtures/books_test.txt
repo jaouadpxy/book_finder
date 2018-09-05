@@ -1,0 +1,3 @@
+Python for dummies	Python	Matthew	ME
+Ruby for stupids	Ruby	Kaiser Chiefs	Kaiser
+Javascript	javascript	Peter poker	wrox
